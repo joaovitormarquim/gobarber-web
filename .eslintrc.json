@@ -29,7 +29,10 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "object-curly-newline": "off",
+    "operator-linebreak": "off",
+    "implicit-arrow-linebreak": "off",
+    "prettier/prettier" : "error",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types" : "off",
     "react-hooks/rules-of-hooks": "error",
