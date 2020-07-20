@@ -24,7 +24,7 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { user, signIn } = useAuth();
-  const { addToast, removeToast } = useToast();
+  const { addToast } = useToast();
 
   console.log(user);
 
@@ -55,7 +55,11 @@ const SignIn: React.FC = () => {
           formRef.current?.setErrors(errors);
         }
 
-        addToast();
+        addToast({
+          type: 'error',
+          title: 'Erro na autenticação.',
+          description: 'Ocorreu um erro ao fazer login. Cheque as credenciais.',
+        });
       }
     },
     [signIn, addToast],
