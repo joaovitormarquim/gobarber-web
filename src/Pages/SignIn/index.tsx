@@ -5,7 +5,7 @@ import { Form } from '@unform/web';
 
 import * as Yup from 'yup';
 
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../hooks/AuthContext';
 import getValidationErrors from '../../utils/getValidationErrors';
 import logo from '../../assets/logo.svg';
 
@@ -23,8 +23,6 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { user, signIn } = useAuth();
-
-  console.log(user);
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -47,9 +45,13 @@ const SignIn: React.FC = () => {
           password: data.password,
         } as SignInFormData);
       } catch (error) {
-        const errors = getValidationErrors(error);
+        if (error instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(error);
 
-        formRef.current?.setErrors(errors);
+          formRef.current?.setErrors(errors);
+        }
+
+        // disparar um toast
       }
     },
     [signIn],
