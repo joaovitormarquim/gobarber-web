@@ -29,6 +29,7 @@
     "prettier"
   ],
   "rules": {
+    "import/no-duplicates": "off",
     "camelcase": "off",
     "arrow-body-style": "off",
     "no-unused-vars": "warn",
