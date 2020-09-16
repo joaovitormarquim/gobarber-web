@@ -29,6 +29,7 @@
     "prettier"
   ],
   "rules": {
+    "indent": "off",
     "import/no-duplicates": "off",
     "camelcase": "off",
     "arrow-body-style": "off",
